@@ -14,7 +14,7 @@ function App() {
           </h5>
         </div>
         <div className="">
-          <div className="relative w-full h-fit border">
+          <div className="relative w-full h-fit">
             <input
               type="email"
               className="text-lg font-normal p-5 border border-gray-400 w-full rounded-md mb-1 peer focus:outline-blue-700 transition duration-500"
