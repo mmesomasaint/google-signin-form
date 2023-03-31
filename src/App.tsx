@@ -2,8 +2,8 @@ import logo from './assets/google.png';
 
 function App() {
   return (
-    <div className="pt-20">
-      <div className="px-12 py-10 w-[90%] mx-auto rounded-xl border border-gray-300 bg-white">
+    <div className="pt-20 max-w-lg w-[95%] mx-auto">
+      <div className="px-10 py-10 rounded-xl border border-gray-300 bg-white">
         <div className="flex flex-col items-center mb-14">
           <img src={logo} className="w-20" />
           <h3 className="text-black text-3xl font-normal leading-none mb-4">
@@ -14,25 +14,25 @@ function App() {
           </h5>
         </div>
         <div className="">
-          <div className="relative w-full h-fit">
+          <div className="relative w-full h-fit mb-12">
             <input
               type="email"
-              className="text-lg font-normal p-5 border border-gray-400 w-full rounded-md mb-1 peer focus:outline-blue-700 transition duration-500"
+              className="text-lg font-normal p-5 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 focus:bg-blue-100 transition duration-200"
             />
-            <p className="block absolute z-10 top-5 transition duration-500 peer-focus:-top-2 ml-4 text-xl peer-focus:text-sm text-gray-500 pointer-events-none bg-white px-2">
+            <p className="absolute z-10 transition-all duration-200 ease-in-out top-5 peer-focus:-top-2 ml-4 text-xl peer-focus:text-sm text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2">
               Email or phone
             </p>
             <a href="#" className="text-lg font-medium text-blue-700">
               Forgot email?
             </a>
           </div>
-          <div className="mt-6 text-lg text-gray-700">
+          <div className="text-lg text-gray-700">
             Not your computer? Use Guest mode to sign in privately.
           </div>
           <a href="#" className="text-lg font-medium text-blue-700">
             Learn more
           </a>
-          <div className="flex justify-between items-center gap-5 my-10">
+          <div className="flex justify-between items-center gap-5 my-12">
             <a href="#" className="text-lg font-medium text-blue-700">
               Create account
             </a>
