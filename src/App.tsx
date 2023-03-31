@@ -17,9 +17,9 @@ function App() {
           <div className="relative w-full h-fit mb-12">
             <input
               type="email"
-              className="text-lg font-normal p-5 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 focus:bg-blue-100 transition duration-200"
+              className="text-lg font-normal p-5 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 transition duration-200 ease-in-out"
             />
-            <p className="absolute z-10 transition-all duration-200 ease-in-out top-5 peer-focus:-top-2 ml-4 text-xl peer-focus:text-sm text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2">
+            <p className="absolute z-10 transition-all duration-200 ease-in-out top-5 peer-focus:-top-3 ml-4 text-xl peer-focus:text-base text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2">
               Email or phone
             </p>
             <a href="#" className="text-lg font-medium text-blue-700">
