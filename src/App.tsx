@@ -4,19 +4,19 @@ import {IoMdArrowDropdown} from 'react-icons/io'
 
 function App() {
   return (
-    <div className="pt-20 max-w-lg w-[95%] mx-auto">
-      <main>
-        <PasswordCard />
+    <div className="pt-14 max-w-lg sm:max-w-[29.5rem] w-[95%] mx-auto">
+      <main className='scale-95'>
+        <EmailCard />
       </main>
-      <footer className="w-[90%] mx-auto my-5 px-2 flex justify-between items-center gap-5">
+      <footer className="w-[90%] mx-auto my-2 px-2 flex justify-between items-center gap-5">
         <div className='flex justify-between items-center gap-5'>
-          <span>English (United Kingdom)</span>
+          <span className='text-xs'>English (United Kingdom)</span>
           <IoMdArrowDropdown className='text-lg text-black' />
         </div>
-        <div className="flex justify-start gap-3 items-center">
-          <p>Help</p>
-          <p>Privacy</p>
-          <p>Terms</p>
+        <div className="flex justify-start gap-7 items-center">
+          <p className='text-xs'>Help</p>
+          <p className='text-xs'>Privacy</p>
+          <p className='text-xs'>Terms</p>
         </div>
       </footer>
     </div>
