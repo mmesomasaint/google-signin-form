@@ -1,4 +1,6 @@
-function EmailBody() {
+import BodyProps from '../types/body-props'
+
+function EmailBody({ setPg }: BodyProps) {
   return (
     <div className="">
       <div className="relative w-full h-fit mb-10">
@@ -23,12 +25,15 @@ function EmailBody() {
         <a href="#" className="text-base font-medium text-blue-700">
           Create account
         </a>
-        <button className="rounded-md bg-blue-700 text-white text-base font-medium leading-[0] py-5 px-6">
+        <button
+          className="rounded-md bg-blue-700 text-white text-base font-medium leading-[0] py-5 px-6"
+          onClick={() => setPg}
+        >
           Next
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default EmailBody
+export default EmailBody;
