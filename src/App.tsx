@@ -1,11 +1,12 @@
 import EmailCard from './components/EmailCard'
+import PasswordCard from './components/PasswordCard'
 import {IoMdArrowDropdown} from 'react-icons/io'
 
 function App() {
   return (
     <div className="pt-20 max-w-lg w-[95%] mx-auto">
       <main>
-        <EmailCard />
+        <PasswordCard />
       </main>
       <footer className="w-[90%] mx-auto my-5 px-2 flex justify-between items-center gap-5">
         <div className='flex justify-between items-center gap-5'>
