@@ -10,9 +10,9 @@ function EmailCard() {
         <h3 className="text-black text-3xl font-normal leading-none mb-4">
           Welcome
         </h3>
-        <div className='flex justify-between items-center gap-2 rounded-full border p-3'>
+        <div className='flex justify-between items-center gap-2 rounded-full border p-2'>
           <BsPersonCircle className='text-gray-700 text-2xl' />
-          <h5 className="text-black text-xl font-normal leading-none">
+          <h5 className="text-black text-lg font-medium leading-none">
             kleinjones@gmail.com
           </h5>
           <MdKeyboardArrowDown className='text-gray-900 text-2xl' />
@@ -27,8 +27,8 @@ function EmailCard() {
           <p className="absolute z-10 transition-all duration-200 ease-in-out top-5 peer-focus:-top-3 ml-4 text-xl peer-focus:text-base text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2">
             Enter your password
           </p>
-          <label>
-            <input type='checkbox' className='p-2' />
+          <label className='flex justify-start items-center'>
+            <input type='checkbox' className='w-5 h-5' />
             <span className="text-xl font-normal text-gray-700 ml-5">Show password</span>
           </label>
         </div>
