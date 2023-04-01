@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import logo from './assets/google.png';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import EmailHeader from './components/EmailHeader';
@@ -7,7 +8,11 @@ import PasswordHeader from './components/PasswordHeader';
 import PasswordBody from './components/PasswordBody';
 
 function App() {
+  const navigate = useNavigate()
   const [emailExists, setEmailExists] = useState(false);
+
+  const setPage: () => void = {
+  }
 
   return (
     <div className="pt-14 max-w-lg sm:max-w-[29.5rem] w-[95%] mx-auto">
@@ -17,7 +22,7 @@ function App() {
             <img src={logo} className="w-[4.5rem]" />
             {emailExists ? <EmailHeader /> : <PasswordHeader />}
           </div>
-          {emailExists ? <EmailBody setPage={setEmailExists} /> : <PasswordBody />}
+          {emailExists ? <EmailBody setPg={setPage} /> : <PasswordBody setPg={setPage} />}
         </div>
       </main>
       <footer className="w-[90%] mx-auto my-2 px-2 flex justify-between items-center gap-5">

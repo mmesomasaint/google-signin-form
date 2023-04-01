@@ -27,7 +27,7 @@ function EmailBody({ setPg }: BodyProps) {
         </a>
         <button
           className="rounded-md bg-blue-700 text-white text-base font-medium leading-[0] py-5 px-6"
-          onClick={() => setPg}
+          onClick={setPg}
         >
           Next
         </button>
