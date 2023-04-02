@@ -2,8 +2,13 @@ import { useState } from 'react';
 import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
 
-function PasswordBody({ setPg }: BodyProps) {
+function PasswordBody({ setPg, setLoading }: BodyProps) {
   const [error, setError] = useState(false);
+  const setPage: () => void = () => {
+    setLoading(true)
+    // Change navigation
+    setLoading(false)
+  }
 
   return (
     <div className="">

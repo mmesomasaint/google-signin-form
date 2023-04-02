@@ -9,8 +9,8 @@ import PasswordBody from './components/PasswordBody';
 import Loader from './components/Loader';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [emailExists, setEmailExists] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [emailExists, setEmailExists] = useState<boolean>(false);
 
   const setPage: () => void = () => {};
 
@@ -24,9 +24,9 @@ function App() {
             {emailExists ? <PasswordHeader /> : <EmailHeader />}
           </div>
           {emailExists ? (
-            <PasswordBody setPg={setPage} />
+            <PasswordBody setPg={setPage} setLoading={setLoading} />
           ) : (
-            <EmailBody setPg={setPage} />
+            <EmailBody setPg={setPage} setLoading={setLoading} />
           )}
         </div>
       </main>
