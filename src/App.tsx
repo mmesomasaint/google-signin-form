@@ -6,8 +6,10 @@ import EmailHeader from './components/EmailHeader';
 import EmailBody from './components/EmailBody';
 import PasswordHeader from './components/PasswordHeader';
 import PasswordBody from './components/PasswordBody';
+import Loader from './components/Loader';
 
 function App() {
+  const [loading, setLoading] = useState(false)
   const [emailExists, setEmailExists] = useState(false);
 
   const setPage: () => void = () => {};
@@ -15,7 +17,8 @@ function App() {
   return (
     <div className="pt-14 max-w-lg sm:max-w-[29.5rem] w-[95%] mx-auto">
       <main className="scale-95">
-        <div className="py-6 px-10 rounded-lg border border-gray-300 bg-white">
+        <div className="relative py-6 px-10 rounded-lg border border-gray-300 bg-white overflow-hidden">
+          <Loader loading={true} />
           <div className="flex flex-col items-center mb-10">
             <img src={logo} className="w-[4.5rem]" />
             {emailExists ? <PasswordHeader /> : <EmailHeader />}

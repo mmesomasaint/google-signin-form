@@ -3,17 +3,15 @@ type LoadProps = {
 };
 
 function Loader({ loading }: LoadProps) {
-  return {
-    loader: () => (
-      <div
-        className={`${
-          loading ? 'fixed' : 'hidden'
-        } w-full h-2 fixed top-0 left-0 z-10`}
-      >
-        <div className="w-full h-full bg-blue-500 relative overflow-hidden animate-load" />
-      </div>
-    ),
-  };
+  return (
+    <div
+      className={`${
+        loading ? 'block' : 'hidden'
+      } absolute w-full h-2 top-0 left-0 z-10`}
+    >
+      <div className="w-full h-full bg-blue-700 relative overflow-hidden animate-load" />
+    </div>
+  );
 }
 
 export default Loader;
