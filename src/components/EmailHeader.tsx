@@ -8,7 +8,7 @@ function EmailHeader() {
         Use your Google Account
       </h5>
     </>
-  )
+  );
 }
 
-export default EmailHeader
+export default EmailHeader;

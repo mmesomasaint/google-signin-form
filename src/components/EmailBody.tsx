@@ -1,24 +1,32 @@
 import { useState } from 'react';
+import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
-import {MdError} from 'react-icons/md'
 
 function EmailBody({ setPg }: BodyProps) {
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
 
   return (
     <div className="">
       <div className="relative w-full h-fit mb-10">
         <input
           type="email"
-          className={`text-base font-normal p-4 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 transition duration-200 ease-in-out ${true && 'border-red-700 focus:border-red-700'}`}
+          className={`text-base font-normal p-4 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 transition duration-200 ease-in-out ${
+            error && 'border-red-700 focus:border-red-700'
+          }`}
         />
-        <p className={`absolute z-10 transition-all duration-200 ease-in-out top-4 peer-focus:-top-2 ml-4 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${true && 'text-red-700 peer-focus:text-red-700 -top-2 text-xs'}`}>
+        <p
+          className={`absolute z-10 transition-all duration-200 ease-in-out top-4 peer-focus:-top-2 ml-4 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${
+            error && 'text-red-700 peer-focus:text-red-700 -top-2 text-xs'
+          }`}
+        >
           Email or phone
         </p>
-        {true && (
-          <div className='flex justify-start items-center gap-2 mb-2'>
-            <MdError className='text-red-700 text-xl' />
-            <span className='text-sm font-light text-red-700'>Couldn&apos;t find your google account</span>
+        {error && (
+          <div className="flex justify-start items-center gap-2 mb-2">
+            <MdError className="text-red-700 text-xl" />
+            <span className="text-sm font-light text-red-700">
+              Couldn&apos;t find your google account
+            </span>
           </div>
         )}
         <a href="#" className="text-base font-medium text-blue-700">

@@ -9,7 +9,7 @@ import PasswordBody from './components/PasswordBody';
 import Loader from './components/Loader';
 
 function App() {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [emailExists, setEmailExists] = useState(false);
 
   const setPage: () => void = () => {};

@@ -1,5 +1,5 @@
 type BodyProps = {
-  setPg: () => void
-}
+  setPg: () => void;
+};
 
-export default BodyProps
+export default BodyProps;
