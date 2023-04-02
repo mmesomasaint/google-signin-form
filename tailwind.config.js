@@ -4,18 +4,21 @@ export default {
   theme: {
     extend: {
       animation: {
-        load: 'load 1s infinite',
+        load: 'load 2s infinite',
       },
       keyframes: {
         load: {
           '0%': {
-            transform: 'translateX(-100%)',
+            transform: 'translateX(-1%)',
+            width: '10%',
           },
           '50%': {
             transform: 'translateX(100%)',
+            width: '60%',
           },
           '100%': {
             transform: 'translateX(100%)',
+            width: '100%',
           },
         },
       },
