@@ -1,31 +1,48 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
 
+type EmailFormData = {
+  email: string;
+};
+
 function EmailBody({ setPg, setIsLoading }: BodyProps) {
+  const emailRef = useRef()
+  const mutationKey = ['Emails'];
   const [email, setEmail] = useState('');
-  const { mutate, isLoading, error } = useMutation((email) =>
-    fetch('/api/auth', {
+  const isEmpty = email.length === 0
+
+  const { mutate, isError } = useMutation<
+    Response,
+    unknown,
+    EmailFormData
+  >(async (data: EmailFormData): Promise<Response> => {
+    setIsLoading(true)
+    const response = await fetch('https://example.com/api/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(email),
-    })
-      .then((res) => res.json())
-      .then(() => setIsLoading(false))
-  );
-  const submitEmail: (e: React.SyntheticEvent) => void = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+      body: JSON.stringify(data),
+    });
+    setIsLoading(false)
+    
+    if (!response.ok) {
+      throw new Error();
+    }
+    return response;
+  }, {
+    mutationKey,
+  });
 
-    const target = e.target as typeof e.target & {
-      email: { value: string };
-    };
-    const email = target.email.value;
-    mutate();
-    setPg();
+  const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const submitEmail: (e: React.SyntheticEvent) => void = async (e) => {
+    e.preventDefault();
+    const result = mutate({ email });
   };
 
   return (
@@ -33,21 +50,22 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
       <div className="relative w-full h-fit mb-10">
         <>
           <input
-            type="email"
+            type="text"
             className={`text-base font-normal p-4 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 transition duration-200 ease-in-out ${
-              error && 'border-red-700 focus:border-red-700'
+              isError && 'border-red-700 focus:border-red-700'
             }`}
             name="email"
             value={email}
+            onChange={onChange}
           />
           <p
-            className={`absolute z-10 transition-all duration-200 ease-in-out top-4 peer-focus:-top-2 ml-4 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${
-              error && 'text-red-700 peer-focus:text-red-700 -top-2 text-xs'
-            }`}
+            className={`absolute z-10 transition-all duration-200 ease-in-out ml-4 peer-focus:-top-2 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${
+              isError && 'text-red-700 peer-focus:text-red-700 -top-2 peer-focus:-top-2 text-xs'
+            } ${!isEmpty ? '-top-2 text-xs' : 'top-4 text-base'}`}
           >
             Email or phone
           </p>
-          {error && (
+          {isError && (
             <div className="flex justify-start items-center gap-2 mb-2">
               <MdError className="text-red-700 text-xl" />
               <span className="text-sm font-light text-red-700">
