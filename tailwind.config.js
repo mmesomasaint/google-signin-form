@@ -10,11 +10,11 @@ export default {
         load: {
           '0%': {
             transform: 'translateX(-1%)',
-            width: '10%',
+            width: '0%',
           },
           '50%': {
             transform: 'translateX(100%)',
-            width: '60%',
+            width: '40%',
           },
           '100%': {
             transform: 'translateX(100%)',
