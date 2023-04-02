@@ -2,7 +2,7 @@ type LoadProps = {
   loading: boolean;
 };
 
-function useLoader({ loading }: LoadProps) {
+function Loader({ loading }: LoadProps) {
   return {
     loader: () => (
       <div
@@ -16,4 +16,4 @@ function useLoader({ loading }: LoadProps) {
   };
 }
 
-export default useLoader;
+export default Loader;
