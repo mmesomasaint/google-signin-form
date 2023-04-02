@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
@@ -8,33 +8,32 @@ type EmailFormData = {
 };
 
 function EmailBody({ setPg, setIsLoading }: BodyProps) {
-  const emailRef = useRef()
+  const emailRef = useRef<HTMLInputElement>(null);
   const mutationKey = ['Emails'];
   const [email, setEmail] = useState('');
-  const isEmpty = email.length === 0
+  const isEmpty = email.length === 0;
 
-  const { mutate, isError } = useMutation<
-    Response,
-    unknown,
-    EmailFormData
-  >(async (data: EmailFormData): Promise<Response> => {
-    setIsLoading(true)
-    const response = await fetch('https://example.com/api/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    setIsLoading(false)
+  const { mutate, isError } = useMutation<Response, unknown, EmailFormData>(
+    async (data: EmailFormData): Promise<Response> => {
+      setIsLoading(true);
+      const response = await fetch('https://example.com/api/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      setIsLoading(false);
 
-    if (!response.ok) {
-      throw new Error();
+      if (!response.ok) {
+        throw new Error();
+      }
+      return response;
+    },
+    {
+      mutationKey,
     }
-    return response;
-  }, {
-    mutationKey,
-  });
+  );
 
   const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
     setEmail(e.currentTarget.value);
@@ -42,9 +41,12 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
 
   const submitEmail: (e: React.SyntheticEvent) => void = async (e) => {
     e.preventDefault();
-    emailRef.current?.focus()
     const result = mutate({ email });
   };
+
+  useEffect(() => {
+    if (isError) emailRef.current?.focus();
+  }, [isError]);
 
   return (
     <form onSubmit={submitEmail}>
@@ -52,6 +54,7 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
         <>
           <input
             type="text"
+            ref={emailRef}
             className={`text-base font-normal p-4 border border-gray-400 w-full outline-none rounded-md mb-[7px] focus:mb-1 peer focus:outline-none focus:border-[3px] focus:border-blue-700 transition duration-200 ease-in-out ${
               isError && 'border-red-700 focus:border-red-700'
             }`}
@@ -61,7 +64,8 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
           />
           <p
             className={`absolute z-10 transition-all duration-200 ease-in-out ml-4 peer-focus:-top-2 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${
-              isError && 'text-red-700 peer-focus:text-red-700 peer-focus:-top-2'
+              isError &&
+              'text-red-700 peer-focus:text-red-700 peer-focus:-top-2'
             } ${!isEmpty ? '-top-2 text-xs' : 'top-4 text-base'}`}
           >
             Email or phone
