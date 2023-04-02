@@ -5,9 +5,9 @@ import BodyProps from '../types/body-props';
 function EmailBody({ setPg, setIsLoading }: BodyProps) {
   const [error, setError] = useState(false);
   const submitEmail: () => void = () => {
-    setLoading(true)
+    setIsLoading(true)
     // Change navigation
-    setLoading(false)
+    setIsLoading(false)
   }
 
   return (

@@ -5,9 +5,9 @@ import BodyProps from '../types/body-props';
 function PasswordBody({ setPg, setIsLoading }: BodyProps) {
   const [error, setError] = useState(false);
   const submitPswd: () => void = () => {
-    setLoading(true)
+    setIsLoading(true)
     // Change navigation
-    setLoading(false)
+    setIsLoading(false)
   }
 
   return (
