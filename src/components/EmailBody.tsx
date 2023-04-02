@@ -27,7 +27,7 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
       body: JSON.stringify(data),
     });
     setIsLoading(false)
-    
+
     if (!response.ok) {
       throw new Error();
     }
@@ -42,6 +42,7 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
 
   const submitEmail: (e: React.SyntheticEvent) => void = async (e) => {
     e.preventDefault();
+    emailRef.current?.focus()
     const result = mutate({ email });
   };
 
@@ -60,7 +61,7 @@ function EmailBody({ setPg, setIsLoading }: BodyProps) {
           />
           <p
             className={`absolute z-10 transition-all duration-200 ease-in-out ml-4 peer-focus:-top-2 text-base peer-focus:text-xs text-gray-500 peer-focus:text-blue-700 pointer-events-none bg-white px-2 ${
-              isError && 'text-red-700 peer-focus:text-red-700 -top-2 peer-focus:-top-2 text-xs'
+              isError && 'text-red-700 peer-focus:text-red-700 peer-focus:-top-2'
             } ${!isEmpty ? '-top-2 text-xs' : 'top-4 text-base'}`}
           >
             Email or phone
