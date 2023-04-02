@@ -4,7 +4,7 @@ import BodyProps from '../types/body-props';
 
 function EmailBody({ setPg, setLoading }: BodyProps) {
   const [error, setError] = useState(false);
-  const setPage: () => void = () => {
+  const submitEmail: () => void = () => {
     setLoading(true)
     // Change navigation
     setLoading(false)
@@ -50,7 +50,7 @@ function EmailBody({ setPg, setLoading }: BodyProps) {
         </a>
         <button
           className="rounded-md bg-blue-700 text-white text-base font-medium leading-[0] py-5 px-6"
-          onClick={setPg}
+          onClick={submitEmail}
         >
           Next
         </button>

@@ -4,7 +4,7 @@ import BodyProps from '../types/body-props';
 
 function PasswordBody({ setPg, setLoading }: BodyProps) {
   const [error, setError] = useState(false);
-  const setPage: () => void = () => {
+  const submitPswd: () => void = () => {
     setLoading(true)
     // Change navigation
     setLoading(false)
@@ -47,7 +47,7 @@ function PasswordBody({ setPg, setLoading }: BodyProps) {
         </a>
         <button
           className="rounded-md bg-blue-700 text-white text-base font-medium leading-[0] py-5 px-6"
-          onClick={setPg}
+          onClick={submitPswd}
         >
           Next
         </button>
