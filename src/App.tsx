@@ -9,7 +9,7 @@ import PasswordBody from './components/PasswordBody';
 import Loader from './components/Loader';
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [emailExists, setEmailExists] = useState<boolean>(false);
 
   const setPage: () => void = () => {};
@@ -18,15 +18,15 @@ function App() {
     <div className="pt-14 max-w-lg sm:max-w-[29.5rem] w-[95%] mx-auto">
       <main className="scale-95">
         <div className="relative py-6 px-10 rounded-lg border border-gray-300 bg-white overflow-hidden">
-          <Loader loading={true} />
+          <Loader isLoading={true} />
           <div className="flex flex-col items-center mb-10">
             <img src={logo} className="w-[4.5rem]" />
             {emailExists ? <PasswordHeader /> : <EmailHeader />}
           </div>
           {emailExists ? (
-            <PasswordBody setPg={setPage} setLoading={setLoading} />
+            <PasswordBody setPg={setPage} setIsLoading={setIsLoading} />
           ) : (
-            <EmailBody setPg={setPage} setLoading={setLoading} />
+            <EmailBody setPg={setPage} setIsLoading={setIsLoading} />
           )}
         </div>
       </main>

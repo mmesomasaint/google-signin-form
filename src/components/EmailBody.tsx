@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
 
-function EmailBody({ setPg, setLoading }: BodyProps) {
+function EmailBody({ setPg, setIsLoading }: BodyProps) {
   const [error, setError] = useState(false);
   const submitEmail: () => void = () => {
     setLoading(true)

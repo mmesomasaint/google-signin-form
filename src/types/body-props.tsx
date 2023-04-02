@@ -1,6 +1,6 @@
 type BodyProps = {
   setPg: () => void;
-  setLoading: (loading: boolean) => void;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export default BodyProps;

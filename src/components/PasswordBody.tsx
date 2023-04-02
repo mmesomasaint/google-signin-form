@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MdError } from 'react-icons/md';
 import BodyProps from '../types/body-props';
 
-function PasswordBody({ setPg, setLoading }: BodyProps) {
+function PasswordBody({ setPg, setIsLoading }: BodyProps) {
   const [error, setError] = useState(false);
   const submitPswd: () => void = () => {
     setLoading(true)
